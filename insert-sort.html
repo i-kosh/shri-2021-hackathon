@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      "use strict";
+
+      (function () {
+        if (!window.shri) {
+          window.shri = {};
+        }
+
+        const sort = (arr) => {
+          if (arr.length < 2) {
+            console.log(arr);
+            return;
+          }
+
+          let sorted = arr.length - 1;
+
+          while (sorted > 0) {
+            const elem = arr[sorted - 1];
+
+            let i = sorted;
+            while (i < arr.length && elem < arr[i]) {
+              arr[i - 1] = arr[i];
+              i++;
+            }
+
+            // Вот на это я потратил два часа %)
+            arr[i - 1] = elem;
+
+            sorted--;
+          }
+
+          console.log(arr);
+        };
+
+        window.shri.sort = sort;
+
+        console.log("Функция доступна в window.shri.sort");
+
+        // const testArr = [9, 1, 3, 2, 3333, 5, 6, 8, 2, 3, 5, 7];
+
+        // console.log(testArr);
+        // window.shri.sort(testArr);
+        // console.log(testArr);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
