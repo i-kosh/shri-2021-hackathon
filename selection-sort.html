@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      "use strict";
+
+      (function () {
+        if (!window.shri) {
+          window.shri = {};
+        }
+
+        const sort = (arr) => {
+          if (arr.length < 2) {
+            console.log(arr);
+            return;
+          }
+
+          let lastIndex = arr.length - 1;
+          let buffer;
+
+          while (lastIndex) {
+            let min;
+            let minIndex;
+
+            arr.slice(0, lastIndex + 1).forEach((elem, i, arr) => {
+              if (!min) {
+                min = elem;
+                minIndex = i;
+
+                return;
+              }
+
+              if (min > elem) {
+                min = elem;
+                minIndex = i;
+              }
+            });
+
+            buffer = arr[lastIndex];
+            arr[lastIndex] = min;
+            arr[minIndex] = buffer;
+
+            lastIndex--;
+          }
+
+          console.log(arr);
+        };
+
+        window.shri.sort = sort;
+
+        console.log("Функция доступна в window.shri.sort");
+
+        // const testArr = [3, 2, 5, 7, 1, 8];
+
+        // console.log(testArr);
+        // window.shri.sort(testArr);
+        // console.log(testArr);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
