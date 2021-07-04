@@ -26,19 +26,24 @@
             let min;
             let minIndex;
 
-            arr.slice(0, lastIndex + 1).forEach((elem, i, arr) => {
+            let currIndex = 0;
+
+            while (currIndex <= lastIndex) {
+              const elem = arr[currIndex];
+
               if (!min) {
                 min = elem;
-                minIndex = i;
-
-                return;
+                minIndex = currIndex;
+                continue;
               }
 
               if (min > elem) {
                 min = elem;
-                minIndex = i;
+                minIndex = currIndex;
               }
-            });
+
+              currIndex++;
+            }
 
             buffer = arr[lastIndex];
             arr[lastIndex] = min;
